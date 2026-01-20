@@ -101,5 +101,5 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 ---
 
 <div align="center">
-  Feito com ❤️ por <a href="[SEU-LINK-AQUI]">Seu Nome</a>
+  Feito com ❤️ por <a href="[instagram.com/amboniii]">Luiz Otavio Amboni</a>
 </div>
