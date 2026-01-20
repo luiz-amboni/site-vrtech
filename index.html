@@ -3,162 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vear Tech | Soluções Tecnológicas Corporativas</title>
-    <meta name="description" content="Site institucional B2B/B2G focado em autoridade e fornecimento de tecnologia para órgãos públicos e grandes empresas.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Vear Tech - Soluções tecnológicas corporativas em Realidade Virtual, Hardware e Projetos Especiais para governo e indústria.">
+    <title>Vear Tech | Soluções Tecnológicas Corporativas e Governamentais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-tech {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-white text-slate-800 antialiased overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="brand">VEAR TECH</a>
-            <div class="mobile-menu-btn">&#9776;</div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">A Vear Tech</a></li>
-                <li><a href="#" class="nav-link">Soluções</a></li>
-                <li><a href="suppliers.html" class="nav-link">Fornecedores</a></li>
-                <li><a href="#contact" class="btn btn-primary">Contato</a></li>
-            </ul>
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight text-slate-900">
+                <span class="text-[#5B2A86]">vear</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 items-center">
+                <a href="#home" class="hover:text-[#5B2A86] transition-colors">Home</a>
+                <a href="#solucoes" class="hover:text-[#5B2A86] transition-colors">Soluções</a>
+                <a href="#modelo" class="hover:text-[#5B2A86] transition-colors">Atuação</a>
+                <a href="suppliers.html" class="hover:text-[#5B2A86] transition-colors">Fornecedores</a>
+                <a href="#contato" class="px-5 py-2.5 bg-[#5B2A86] text-white rounded hover:bg-[#4a226e] transition-colors font-semibold">Contato</a>
+            </div>
+
+            <!-- Botão Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-900 focus:outline-none p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile (Controlado pelo main.js) -->
+        <div id="mobile-menu" class="hidden bg-white border-t border-slate-100 shadow-lg absolute w-full">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="#home" class="text-slate-600 hover:text-[#5B2A86] font-medium">Home</a>
+                <a href="#solucoes" class="text-slate-600 hover:text-[#5B2A86] font-medium">Soluções</a>
+                <a href="#modelo" class="text-slate-600 hover:text-[#5B2A86] font-medium">Atuação</a>
+                <a href="suppliers.html" class="text-slate-600 hover:text-[#5B2A86] font-medium">Fornecedores</a>
+                <a href="#contato" class="text-[#5B2A86] font-bold">Fale Conosco</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="section reveal">
-        <div class="container">
-            <div class="grid grid-2" style="align-items: center;">
-                <div>
-                    <span class="text-uppercase">Institucional & Corporativo</span>
-                    <h1>Tecnologia e precisão para <span class="text-gradient">grandes projetos.</span></h1>
-                    <p>Conectamos inovação a gestores corporativos e órgãos públicos com segurança, conformidade e capacidade operacional.</p>
-                    <div style="margin-top: 24px;">
-                        <a href="#contact" class="btn btn-primary">Falar com Consultor</a>
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden scroll-mt-32 border-b-4 border-[#5B2A86]">
+        <!-- Background Image & Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Background Tech" class="w-full h-full object-cover">
+            <!-- Overlay escuro uniforme para contraste profissional -->
+            <div class="absolute inset-0 bg-slate-900/80"></div>
+            <!-- Gradiente sutil apenas no topo para garantir leitura do menu -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-transparent opacity-60"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl reveal">
+                <span class="text-[#E6007E] font-bold tracking-wider text-sm uppercase mb-4 block font-tech">tech to go beyond</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Tecnologia e fornecimento estratégico para <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#5B2A86] to-[#E6007E]">grandes operações.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
+                    A Vear Tech é referência na identificação e viabilização de produtos de alta complexidade tecnológica para o mercado nacional. Atendemos órgãos públicos, indústrias e instituições de ensino.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contato" class="inline-flex justify-center items-center bg-[#5B2A86] hover:bg-[#4a226e] text-white font-semibold py-4 px-8 rounded transition-all shadow-lg shadow-[#5B2A86]/50">
+                        Falar com Consultor
+                    </a>
+                    <a href="#solucoes" class="inline-flex justify-center items-center border border-slate-500 hover:border-white text-slate-300 hover:text-white font-semibold py-4 px-8 rounded transition-all hover:bg-white/5">
+                        Conhecer Soluções
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Soluções (Grid Webflow Style) -->
+    <section id="solucoes" class="py-24 bg-slate-50 scroll-mt-32">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 reveal">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Nossas Soluções</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#5B2A86] to-[#E6007E]"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow reveal">
+                    <div class="w-12 h-12 bg-[#5B2A86]/10 rounded flex items-center justify-center mb-6 text-[#5B2A86]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Tecnologia & Hardware</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Hardware e equipamentos para projetos tecnológicos avançados, incluindo soluções imersivas e equipamentos especiais de alta performance.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-[#5B2A86]/10 rounded flex items-center justify-center mb-6 text-[#5B2A86]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Soluções Elétricas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Fornecimento de equipamentos e componentes elétricos para aplicações industriais, educacionais e institucionais com certificação técnica.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-[#5B2A86]/10 rounded flex items-center justify-center mb-6 text-[#5B2A86]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Indústria & Conformidade</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Atuação transversal em projetos que exigem produtos técnicos, homologação, conformidade e precisão operacional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destaque VR -->
+    <section class="py-20 bg-slate-900 text-white">
+        
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 reveal">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold mb-6">Líder em Realidade Virtual</h2>
+                <p class="text-slate-300 mb-6 text-lg">
+                    Somos o maior revendedor de produtos para soluções em Realidade Virtual do Brasil, com mais de 300 clientes atendidos.
+                </p>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-center"><span class="w-2 h-2 bg-[#E6007E] rounded-full mr-3"></span>Equipamentos de ponta</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-[#E6007E] rounded-full mr-3"></span>Suporte técnico especializado</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-[#E6007E] rounded-full mr-3"></span>Logística nacional</li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 bg-slate-800 p-8 rounded-lg border border-slate-700">
+                <h3 class="text-xl font-semibold mb-6 text-white">Quem confia na Vear Tech</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- USP -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-8 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 80 30" fill="currentColor">
+                            <path d="M10,5 L10,20 A5,5 0 0,0 20,20 L20,5 M30,5 L40,5 L30,10 L40,10 L30,15 L40,15 L30,20 L40,20 M50,5 L60,5 A5,5 0 0,1 60,15 L50,15 L50,20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <!-- UNESP -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-6 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 100 30" fill="currentColor">
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="20">unesp</text>
+                        </svg>
+                    </div>
+                    <!-- SENAI -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-5 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 100 30" fill="currentColor">
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="22" letter-spacing="2">SENAI</text>
+                        </svg>
+                    </div>
+                    <!-- SENAC -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-5 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 100 30" fill="currentColor">
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22">Senac</text>
+                        </svg>
+                    </div>
+                    <!-- INB -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-6 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 80 30" fill="currentColor">
+                            <path d="M10,5 L10,25 M30,5 L30,25 L45,5 L45,25 M60,5 L70,5 A5,5 0 0,1 70,15 L60,15 A5,5 0 0,1 70,25 L60,25 L60,5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <!-- IMBEL -->
+                    <div class="group h-20 flex items-center justify-center bg-slate-700/30 rounded border border-slate-600/30 hover:border-[#5B2A86]/50 hover:bg-slate-700/50 transition-all duration-300 cursor-default">
+                        <svg class="h-5 w-auto text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 100 30" fill="currentColor">
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="20" letter-spacing="1">IMBEL</text>
+                        </svg>
                     </div>
                 </div>
-                <!-- Hero Image -->
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tecnologia e Inovação Global" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow-md);">
-            </div>
-        </div>
-    </header>
-
-    <!-- Areas of Activity -->
-    <section class="section bg-off reveal">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 48px;">Áreas de Atuação</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>Soluções de Tecnologia</h3>
-                    <p>Hardware e equipamentos para projetos tecnológicos avançados, incluindo soluções imersivas e equipamentos especiais.</p>
-                </div>
-                <div class="card">
-                    <h3>Soluções Elétricas</h3>
-                    <p>Fornecimento de equipamentos e componentes elétricos para aplicações industriais, educacionais e institucionais.</p>
-                </div>
-                <div class="card">
-                    <h3>Outras Indústrias</h3>
-                    <p>Atuação transversal em projetos que exigem produtos técnicos, homologação, conformidade e precisão operacional.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- VR Highlight (Feature) -->
-    <section class="section bg-dark reveal">
-        <div class="container">
-            <div class="grid grid-2" style="align-items: center;">
-                <div>
-                    <span class="text-uppercase" style="color: #EC407A;">Destaque</span>
-                    <h2 style="color: white;">Líder em Realidade Virtual</h2>
-                    <p>Somos o maior revendedor de produtos para soluções em Realidade Virtual do Brasil, com mais de 300 clientes atendidos.</p>
-                    <p>A Vear Tech é referência na identificação e viabilização de produtos de alta complexidade tecnológica para o mercado nacional.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.1); height: 300px; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                    Visual VR / Headset
-                </div>
+    <!-- Modelo de Atuação -->
+    <section id="modelo" class="py-24 bg-white border-b border-slate-100 scroll-mt-32">
+        <div class="container mx-auto px-6 text-center reveal">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Modelo de Atuação Exclusivo</h2>
+                <p class="text-lg text-slate-600 mb-8">
+                    A Vear Tech realiza vendas exclusivamente para clientes corporativos, sejam eles privados ou públicos. <span class="font-semibold text-slate-900">Não atuamos no varejo.</span> Nossa operação é orientada a projetos, contratos e fornecimentos institucionais.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Clients / Trust -->
-    <section class="section reveal">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 16px;">Quem confia na Vear Tech</h2>
-            <p style="text-align: center; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Atendemos clientes públicos e privados em todo o Brasil.
-            </p>
-            <div class="logo-grid">
-                <div class="client-logo">USP</div>
-                <div class="client-logo">UNESP</div>
-                <div class="client-logo">SENAI</div>
-                <div class="client-logo">SENAC</div>
-                <div class="client-logo">SEBRAE</div>
-                <div class="client-logo">INB</div>
-                <div class="client-logo">IMBEL</div>
-                <div class="client-logo">FIEB</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Model of Operation -->
-    <section class="section bg-off reveal">
-        <div class="container" style="text-align: center; max-width: 800px;">
-            <h2>Modelo de Atuação</h2>
-            <p>A Vear Tech realiza vendas exclusivamente para clientes corporativos, sejam eles privados ou públicos. <strong>Não atuamos no varejo.</strong></p>
-            <p>Nossa operação é orientada a projetos, contratos e fornecimentos institucionais.</p>
-        </div>
-    </section>
-
-    <!-- Contact CTA -->
-    <section id="contact" class="section reveal">
-        <div class="container">
-            <div class="grid grid-2">
-                <div>
-                    <h2>Entre em contato</h2>
-                    <p>Estamos prontos para atender demandas de:</p>
-                    <ul style="margin-bottom: 24px; list-style: disc; padding-left: 20px; color: var(--color-text-light);">
-                        <li>Vendas corporativas</li>
-                        <li>Consultas técnicas</li>
-                        <li>Suporte especializado</li>
-                        <li>Assessoria para órgãos públicos</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <form>
-                        <div style="margin-bottom: 16px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">E-mail Corporativo</label>
-                            <input type="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+    <!-- Contato -->
+    <section id="contato" class="py-24 bg-white scroll-mt-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col md:flex-row reveal">
+                <div class="md:w-1/2 p-10 bg-slate-50">
+                    <h3 class="text-2xl font-bold mb-2 text-slate-900">Entre em Contato</h3>
+                    <p class="text-slate-600 mb-8 text-sm">Vendas corporativas, consultas técnicas e assessoria para órgãos públicos.</p>
+                    
+                    <form class="space-y-4" id="contact-form">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Nome Completo</label>
+                            <input type="text" id="name" required class="w-full bg-white border border-slate-300 rounded p-3 text-slate-900 focus:border-[#5B2A86] focus:ring-1 focus:ring-[#5B2A86] focus:outline-none transition">
                         </div>
-                        <div style="margin-bottom: 16px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Telefone / WhatsApp</label>
-                            <input type="tel" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">E-mail Corporativo</label>
+                            <input type="email" id="email" required class="w-full bg-white border border-slate-300 rounded p-3 text-slate-900 focus:border-[#5B2A86] focus:ring-1 focus:ring-[#5B2A86] focus:outline-none transition">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Contato</button>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Telefone / WhatsApp</label>
+                            <input type="tel" id="phone" required maxlength="15" placeholder="(00) 00000-0000" class="w-full bg-white border border-slate-300 rounded p-3 text-slate-900 focus:border-[#5B2A86] focus:ring-1 focus:ring-[#5B2A86] focus:outline-none transition">
+                        </div>
+                        <button type="submit" class="w-full bg-[#5B2A86] hover:bg-[#4a226e] text-white font-bold py-4 rounded transition mt-4">Solicitar Contato</button>
                     </form>
                 </div>
+                <div class="md:w-1/2 p-10 flex flex-col justify-center bg-slate-900 text-white">
+                    <h4 class="text-xl font-bold mb-6">Canais de Atendimento</h4>
+                    <div class="space-y-6 text-slate-300">
+                        <div class="flex items-start space-x-4">
+                            <div class="mt-1">
+                                <svg class="w-5 h-5 text-[#E6007E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">E-mail</span>
+                                <span class="text-sm">comercial@veartech.com.br</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="mt-1">
+                                <svg class="w-5 h-5 text-[#E6007E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <span class="block text-white font-medium">Telefone</span>
+                                <span class="text-sm">+55 (11) 3000-0000</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-slate-700">
+                            <p class="text-sm text-slate-400">
+                                Atendimento exclusivo para pessoas jurídicas e órgãos governamentais.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="grid grid-4">
-                <div>
-                    <h4>VEAR TECH</h4>
-                    <p class="text-small">Soluções institucionais e tecnológicas.</p>
-                </div>
-                <!-- Additional footer links would go here -->
+    <footer class="bg-white py-12 border-t border-slate-200">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-bold text-slate-900"><span class="text-[#5B2A86]">vear</span></span>
+                <p class="text-xs text-slate-500 mt-1">Soluções Tecnológicas Corporativas</p>
+            </div>
+            <div class="text-slate-500 text-sm">
+                &copy; 2024 Vear Tech. Todos os direitos reservados.
             </div>
         </div>
     </footer>
+
     <script src="main.js"></script>
 </body>
 </html>

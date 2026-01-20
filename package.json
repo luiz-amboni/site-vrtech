@@ -1,0 +1,16 @@
+{
+  "name": "vear-tech-backend",
+  "version": "1.0.0",
+  "description": "Backend para recepção de formulários da Vear Tech",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

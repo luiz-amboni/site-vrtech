@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+contacts.json
+*.log
+.env
+.vscode/
+dist/

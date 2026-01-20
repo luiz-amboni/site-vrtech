@@ -1,105 +1,81 @@
 <div align="center">
 
-```
- __      __   ___  __   __   ___  __       ___  ___
- \ \    / /  / __| \ \ / /  / __| |  \     / __| | __|
-  \ \/\/ /  | (__   \ V /  | (__  | | |   | (__  | _|
-   \_/\_/    \___|   \_/    \___| |__/     \___| |___|
-```
-
-  <h1>VR·TECH</h1>
-
-  <p>Uma jornada imersiva pelas mais recentes tecnologias de Realidade Virtual. Explore, aprenda e inspire-se.</p>
+  <h1>VEAR TECH</h1>
+  
+  <p><strong>Soluções Tecnológicas Corporativas e Governamentais</strong></p>
+  <p>Landing Page Institucional com sistema de captura de leads integrado.</p>
 
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" alt="Status do Projeto"/>
-  <img src="https://img.shields.io/badge/licen%C3%A7a-MIT-blue" alt="Licença"/>
-  <img src="https://img.shields.io/github/last-commit/google/docsy" alt="Último Commit"/>
+  <img src="https://img.shields.io/badge/node.js-%3E%3D%2014.0.0-green" alt="Node Version"/>
+  <img src="https://img.shields.io/badge/express-4.18.2-blue" alt="Express Version"/>
+  <img src="https://img.shields.io/badge/frontend-HTML5%20%2B%20Tailwind-orange" alt="Frontend"/>
+  <img src="https://img.shields.io/badge/license-ISC-lightgrey" alt="License"/>
 </div>
 
 ---
 
 ## 🎯 Sobre o Projeto
 
-O **VR·TECH** é uma plataforma web dedicada a entusiastas, desenvolvedores e curiosos do universo da Realidade Virtual (VR). O objetivo é centralizar notícias, tutoriais, reviews de hardware e showcases de projetos inovadores, servindo como um ponto de encontro para a comunidade de VR.
-
-> Este projeto foi criado para ser uma vitrine visualmente impactante e informativa, demonstrando o potencial de interfaces web modernas aplicadas ao nicho de tecnologia imersiva.
+A **Vear Tech** é uma aplicação web composta por uma Landing Page institucional de alta performance e um Backend leve para gerenciamento de contatos. O projeto visa apresentar soluções em Realidade Virtual e Hardware para o setor corporativo (B2B) e governamental.
 
 ---
 
 ## ✨ Funcionalidades
 
-- **📰 Feed de Notícias:** Fique por dentro das últimas novidades do mundo VR.
-- **👓 Reviews de Hardware:** Análises detalhadas dos principais headsets e acessórios.
-- **💡 Showcase de Projetos:** Uma galeria para desenvolvedores exibirem seus trabalhos em VR.
-- **📚 Tutoriais Interativos:** Guias passo a passo para iniciar no desenvolvimento VR.
-- **🎨 Design Responsivo:** Experiência de usuário fluida em qualquer dispositivo, do desktop ao mobile.
+- **🎨 Interface Moderna:** Design responsivo utilizando Tailwind CSS e animações suaves (Scroll Reveal).
+- **📝 Captura de Leads:** Formulário de contato funcional integrado ao backend.
+- **server-side:** API RESTful construída com Express para processar dados do formulário.
+- **💾 Persistência de Dados:** Armazenamento local de contatos em arquivo JSON (`contacts.json`), sem necessidade de banco de dados complexo para o MVP.
+- **📱 Mobile First:** Menu de navegação adaptável e otimizado para dispositivos móveis.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-Este projeto foi construído com as seguintes tecnologias:
+O projeto utiliza uma arquitetura simples e eficiente:
 
-| Frontend | Estilização |
-|---|---|
-| ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white) | ![Styled Components](https://img.shields.io/badge/-Styled_Components-DB7093?logo=styled-components&logoColor=white) |
-| ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=next.js&logoColor=white) | ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white) |
+*   **Frontend:** HTML5, JavaScript (Vanilla), Tailwind CSS (via CDN).
+*   **Backend:** Node.js, Express.
+*   **Utilitários:** Cors, File System (fs/promises).
 
 ---
 
-## 🏁 Começando
+## 📦 Instalação e Execução
 
-Para rodar este projeto localmente, siga os passos abaixo:
+Siga os passos abaixo para rodar o projeto em sua máquina local.
 
-1.  **Clone o repositório:**
-    ```bash
-    git clone https://github.com/seu-usuario/site-vrtech.git
-    ```
+### Pré-requisitos
 
-2.  **Navegue até o diretório:**
-    ```bash
-    cd site-vrtech
-    ```
+- Node.js instalado.
 
-3.  **Instale as dependências:**
+### Passo a Passo
+
+1.  **Instale as dependências do Backend:**
+    Abra o terminal na pasta raiz do projeto e execute:
     ```bash
     npm install
-    # ou
-    yarn install
     ```
 
-4.  **Inicie o servidor de desenvolvimento:**
+2.  **Inicie o Servidor (API):**
     ```bash
-    npm run dev
-    # ou
-    yarn dev
+    npm start
     ```
+    *O servidor iniciará em `http://localhost:3000`.*
 
-5.  Abra seu navegador e acesse `http://localhost:3000`.
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são o que tornam a comunidade open-source um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
-
-1.  Faça um *Fork* do projeto.
-2.  Crie uma *Branch* para sua feature (`git checkout -b feature/AmazingFeature`).
-3.  Faça o *Commit* de suas mudanças (`git commit -m 'Add some AmazingFeature'`).
-4.  Faça o *Push* para a *Branch* (`git push origin feature/AmazingFeature`).
-5.  Abra um *Pull Request*.
+3.  **Acesse o Frontend:**
+    Como o frontend é estático (HTML), você pode simplesmente abrir o arquivo `index.html` no seu navegador.
+    
+    > **Dica:** Para uma melhor experiência (e evitar bloqueios de CORS em alguns navegadores), recomenda-se usar uma extensão como "Live Server" no VS Code para servir o `index.html`.
 
 ---
 
-## 📝 Licença
+## 📂 Estrutura de Arquivos
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
-
----
-
-<div align="center">
-  Feito com ❤️ por <a href="[instagram.com/amboniii]">Luiz Otavio Amboni</a>
-</div>
+----
+----
+*   `server.js`: Ponto de entrada da API Backend.
+*   `index.html`: Página principal (Landing Page).
+*   `main.js`: Lógica do frontend (menu, scroll, envio de formulário).
+*   `contacts.json`: "Banco de dados" local onde os leads são salvos.
