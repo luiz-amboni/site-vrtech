@@ -1,7 +1,5 @@
 node_modules/
-.DS_Store
-contacts.json
-*.log
 .env
-.vscode/
-dist/
+contacts.json
+.DS_Store
+*.log

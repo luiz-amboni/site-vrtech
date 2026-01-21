@@ -1,10 +1,12 @@
+require('dotenv').config(); // Carrega variáveis de ambiente do arquivo .env
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs').promises; // Usar versão baseada em Promises para não bloquear o Event Loop
 const path = require('path');
+const twilio = require('twilio');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors()); // Permite que o site (frontend) fale com o servidor
@@ -37,10 +39,10 @@ app.post('/api/contact', async (req, res) => {
         // Verifica se o arquivo existe tentando lê-lo
         try {
             const fileData = await fs.readFile(dbPath, 'utf8');
-            contacts = JSON.parse(fileData);
+            contacts = fileData.trim() ? JSON.parse(fileData) : [];
         } catch (error) {
-            // Se der erro de arquivo não encontrado (ENOENT), iniciamos com array vazio
-            if (error.code !== 'ENOENT') throw error;
+            // Se der erro de arquivo não encontrado (ENOENT) ou JSON inválido, iniciamos com array vazio
+            if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error;
         }
 
         // Adicionar novo contato
@@ -48,6 +50,22 @@ app.post('/api/contact', async (req, res) => {
 
         // Salvar no arquivo de forma assíncrona
         await fs.writeFile(dbPath, JSON.stringify(contacts, null, 2));
+
+        // --- NOTIFICAÇÃO VIA WHATSAPP (TWILIO) ---
+        try {
+            const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+            await client.messages.create({
+                body: `🚀 *Novo Lead Vear Tech*\n\n👤 *Nome:* ${newContact.name}\n📧 *Email:* ${newContact.email}\n📱 *Tel:* ${newContact.phone}`,
+                from: process.env.TWILIO_PHONE_FROM,
+                to: process.env.TWILIO_PHONE_TO
+            });
+
+            console.log('Notificação WhatsApp enviada com sucesso (Twilio).');
+        } catch (error) {
+            // O erro no envio não trava o servidor, garantindo que o dado foi salvo no JSON
+            console.error('Erro ao enviar notificação WhatsApp:', error.message);
+        }
 
         console.log('Novo lead recebido:', newContact.name);
 
