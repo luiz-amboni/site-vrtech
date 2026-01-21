@@ -103,7 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             // Envia para o Backend
-            fetch('http://localhost:3000/api/contact', {
+            // Detecta automaticamente o endereço (localhost ou 127.0.0.1) para evitar erros de conexão
+            const apiHost = window.location.hostname || 'localhost';
+            fetch(`http://${apiHost}:3000/api/contact`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, phone })
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Erro:', error);
-                alert('Erro de conexão com o servidor.');
+                alert('Erro de conexão. Verifique se o servidor está rodando e evite abrir o HTML direto (use Live Server).');
             })
             .finally(() => {
                 submitBtn.innerText = originalText;

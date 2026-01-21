@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors()); // Permite que o site (frontend) fale com o servidor
+app.use(cors({ origin: '*' })); // Permite que o site (frontend) fale com o servidor de qualquer origem
 app.use(express.json()); // Permite ler JSON enviado pelo formulário
 
 // Rota para receber o contato
@@ -52,23 +52,18 @@ app.post('/api/contact', async (req, res) => {
         await fs.writeFile(dbPath, JSON.stringify(contacts, null, 2));
 
         // --- NOTIFICAÇÃO VIA WHATSAPP (TWILIO) ---
-        try {
-            const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-
-            await client.messages.create({
-                body: `🚀 *Novo Lead Vear Tech*\n\n👤 *Nome:* ${newContact.name}\n📧 *Email:* ${newContact.email}\n📱 *Tel:* ${newContact.phone}`,
-                from: process.env.TWILIO_PHONE_FROM,
-                to: process.env.TWILIO_PHONE_TO
-            });
-
-            console.log('Notificação WhatsApp enviada com sucesso (Twilio).');
-        } catch (error) {
-            // O erro no envio não trava o servidor, garantindo que o dado foi salvo no JSON
-            console.error('Erro ao enviar notificação WhatsApp:', error.message);
-        }
+        // Envia em segundo plano (sem await) para responder ao site instantaneamente
+        const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+        
+        client.messages.create({
+            body: `🚀 *Novo Lead Vear Tech*\n\n👤 *Nome:* ${newContact.name}\n📧 *Email:* ${newContact.email}\n📱 *Tel:* ${newContact.phone}`,
+            from: process.env.TWILIO_PHONE_FROM,
+            to: process.env.TWILIO_PHONE_TO
+        })
+        .then(() => console.log('Notificação WhatsApp enviada com sucesso (Twilio).'))
+        .catch(err => console.error('Erro ao enviar notificação WhatsApp:', err.message));
 
         console.log('Novo lead recebido:', newContact.name);
-
         return res.status(201).json({ message: 'Contato salvo com sucesso!' });
     } catch (error) {
         console.error("Erro no servidor:", error);
@@ -77,6 +72,6 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

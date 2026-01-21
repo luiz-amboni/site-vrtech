@@ -78,7 +78,7 @@ Siga os passos abaixo para rodar o projeto em sua máquina local.
 4.  **Acesse o Frontend:**
     Como o frontend é estático (HTML), você pode simplesmente abrir o arquivo `index.html` no seu navegador.
     
-    > **Dica:** Para uma melhor experiência (e evitar bloqueios de CORS em alguns navegadores), recomenda-se usar uma extensão como "Live Server" no VS Code para servir o `index.html`.
+    > **Dica:** Para evitar erros de conexão (CORS), **não abra o arquivo diretamente** (file://). Use uma extensão como "Live Server" no VS Code para servir o `index.html`.
 
 ---
 
