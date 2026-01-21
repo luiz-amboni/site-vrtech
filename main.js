@@ -4,7 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            
+            const href = this.getAttribute('href');
+            // Correção: Ignora links que são apenas "#" (como o logo) para evitar erro de sintaxe
+            if (href === '#' || !href.startsWith('#')) return;
+
+            const target = document.querySelector(href);
             if (target) {
                 // Calculate offset (Header height approx 80px + 20px padding = 100px)
                 const headerOffset = 100;
@@ -91,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Impede o recarregamento da página
+            console.log('Botão clicado. Iniciando envio...');
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -115,12 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Recebemos sua solicitação! Entraremos em contato em breve.');
                     contactForm.reset();
                 } else {
-                    alert('Erro ao enviar. Tente novamente.');
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Erro desconhecido no servidor');
+                    });
                 }
             })
             .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro de conexão. Verifique se o servidor está rodando e evite abrir o HTML direto (use Live Server).');
+                console.error('Erro detalhado:', error);
+                alert(`Erro ao enviar: ${error.message}\n\nVerifique se o servidor (npm start) está rodando na porta 3000.`);
             })
             .finally(() => {
                 submitBtn.innerText = originalText;
