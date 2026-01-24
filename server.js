@@ -53,15 +53,38 @@ app.post('/api/contact', async (req, res) => {
 
         // --- NOTIFICAÇÃO VIA WHATSAPP (TWILIO) ---
         // Envia em segundo plano (sem await) para responder ao site instantaneamente
-        const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-        
-        client.messages.create({
-            body: `🚀 *Novo Lead Vear Tech*\n\n👤 *Nome:* ${newContact.name}\n📧 *Email:* ${newContact.email}\n📱 *Tel:* ${newContact.phone}`,
-            from: process.env.TWILIO_PHONE_FROM,
-            to: process.env.TWILIO_PHONE_TO
-        })
-        .then(() => console.log('Notificação WhatsApp enviada com sucesso (Twilio).'))
-        .catch(err => console.error('Erro ao enviar notificação WhatsApp:', err.message));
+        if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
+            const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+            
+            // Garante que o número tenha o prefixo 'whatsapp:' exigido pelo Twilio
+            const formatWa = (num) => (num && !num.startsWith('whatsapp:')) ? `whatsapp:${num}` : num;
+
+            client.messages.create({
+                body: `🚀 *Novo Lead Vear Tech*\n\n👤 *Nome:* ${newContact.name}\n📧 *Email:* ${newContact.email}\n📱 *Tel:* ${newContact.phone}`,
+                from: formatWa(process.env.TWILIO_PHONE_FROM),
+                to: formatWa(process.env.TWILIO_PHONE_TO)
+            })
+            .then((message) => {
+                console.log(`Notificação WhatsApp enviada. SID: ${message.sid} | Status inicial: ${message.status}`);
+                
+                // Verifica o status final após 3 segundos para confirmar entrega ou erro
+                setTimeout(() => {
+                    client.messages(message.sid).fetch()
+                        .then(m => console.log(`>> Status atualizado (${m.sid}): ${m.status} ${m.errorCode ? `| Erro: ${m.errorCode} - ${m.errorMessage}` : ''}`))
+                        .catch(e => console.error('Erro ao verificar status:', e.message));
+                }, 3000);
+            })
+            .catch(err => {
+                if (err.code === 63016) {
+                    console.error('❌ ERRO TWILIO (63016): A janela de conversa fechou.');
+                    console.error('👉 SOLUÇÃO: Pegue o celular de destino e envie qualquer mensagem para o número do Sandbox no WhatsApp para reativar.');
+                } else {
+                    console.error('Erro Twilio:', err.message);
+                }
+            });
+        } else {
+            console.warn('AVISO: Credenciais do Twilio não configuradas no .env. Notificação não enviada.');
+        }
 
         console.log('Novo lead recebido:', newContact.name);
         return res.status(201).json({ message: 'Contato salvo com sucesso!' });
